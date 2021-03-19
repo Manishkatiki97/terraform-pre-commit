@@ -1,0 +1,1 @@
+instance_name = "Ubuntu_instance"

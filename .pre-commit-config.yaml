@@ -1,0 +1,31 @@
+repos:
+- repo: https://github.com/gruntwork-io/pre-commit
+  rev: v0.1.12
+  hooks:
+    - id: tflint
+      args:
+        - "--module"
+        - "--config=.tflint.hcl"
+    - id: terraform-validate
+    - id: terraform-fmt
+- repo: git://github.com/antonbabenko/pre-commit-terraform
+  rev: v1.48.0
+  hooks:
+    - id: terraform_tfsec
+    - id: terraform_docs
+- repo: https://github.com/bridgecrewio/checkov.git
+  rev: '1.0.838'
+  hooks:
+    - id: checkov
+- repo: https://github.com/Yelp/detect-secrets
+  rev: v1.0.3
+  hooks:
+    - id: detect-secrets
+      args: ['--baseline', '.secrets.baseline']
+      exclude: package.lock.json
+# - repo: https://github.com/thoughtworks/talisman
+#   rev: v1.11.0
+#   hooks:
+#     # either `commit` or `push` support
+#      - id: talisman-commit
+#     #- id: talisman-push
